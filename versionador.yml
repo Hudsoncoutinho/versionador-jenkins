@@ -1,0 +1,19 @@
+# versionador jenkins 
+# hudsoncoutinho@gmail.com
+
+pipeline { 
+    agent any         stage 
+    
+    { 
+stage ('Download') { 
+            steps { 
+                sh 'echo "artifact file"> generatedFile.txt' 
+            } 
+        } 
+    } 
+    post { 
+        always { 
+            archiveArtifacts artifacts: 'generatedFile.txt', onlyIfSuccessful: true 
+        } 
+    } 
+ } 
