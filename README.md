@@ -22,21 +22,3 @@ Exemplo no pipeline:
 A compilação criará um arquivo chamado generatedFile.txt e, após o bulid, o arquivará apenas se for bem-sucedido.
 
 
-pipeline { 
-    agent any         stage 
-    
-    { 
-stage ('Download') { 
-            steps { 
-                sh 'echo "artifact file"> generatedFile.txt' 
-            } 
-        } 
-    } 
-    post { 
-        always { 
-            archiveArtifacts artifacts: 'generatedFile.txt', onlyIfSuccessful: true 
-        } 
-    } 
- } 
-
-
